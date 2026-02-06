@@ -1,0 +1,60 @@
+{
+  "django_example": {
+    "dx_workflow_run_id": "5smozotd7o8o",
+    "template_type": "django",
+    "github_organization": "my-organization",
+    "github_repository": "my-django-app",
+    "project_name": "myproject",
+    "description": "A Django web application",
+    "author_name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  "go_example": {
+    "dx_workflow_run_id": "6tnpapue8p9p",
+    "template_type": "go",
+    "github_organization": "my-organization",
+    "github_repository": "my-go-service",
+    "app_name": "mygoapp",
+    "project_short_description": "A Go microservice"
+  },
+  "cpp_example": {
+    "dx_workflow_run_id": "7uoqbqvf9q0q",
+    "template_type": "cpp",
+    "github_organization": "my-organization",
+    "github_repository": "my-cpp-project",
+    "project_name": "mycppproject",
+    "description": "A C++ application",
+    "author_name": "Jane Smith"
+  },
+  "python_example": {
+    "dx_workflow_run_id": "8vprcrwg0r1r",
+    "template_type": "python",
+    "github_organization": "my-organization",
+    "github_repository": "my-python-package",
+    "project_name": "My Python Package",
+    "project_slug": "my_python_package",
+    "project_short_description": "A reusable Python package",
+    "full_name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  "custom_example": {
+    "dx_workflow_run_id": "9wqsdsxh1s2s",
+    "template_type": "custom",
+    "github_organization": "my-organization",
+    "github_repository": "my-custom-project",
+    "cookiecutter_url": "https://github.com/lacion/cookiecutter-golang",
+    "app_name": "mycustomapp",
+    "project_short_description": "Custom project from template"
+  },
+  "entity_specific_example": {
+    "dx_workflow_run_id": "0xrtetyi2t3t",
+    "template_type": "python",
+    "github_organization": "my-organization",
+    "github_repository": "my-entity-service",
+    "entity_identifier": "authentication-service",
+    "entity_name": "Authentication Service",
+    "project_name": "Authentication Service",
+    "project_slug": "authentication_service",
+    "description": "Authentication microservice"
+  }
+}
