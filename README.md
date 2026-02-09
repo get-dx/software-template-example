@@ -362,5 +362,4 @@ Use the interactive docs at http://localhost:8000/api/docs to test endpoints dir
 ## Support
 
 - **API Documentation**: http://localhost:8000/api/docs
-- **DX Integration**: See [DX_WORKFLOW_SETUP.md](DX_WORKFLOW_SETUP.md)
-- **Issues**: [Your Issue Tracker URL]
+- **DX Integration**: See [DX_WORKFLOW_SETUP.md](https://docs.getdx.com/self-service/examples/software-templates/)
