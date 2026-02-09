@@ -12,13 +12,13 @@ A Python service that creates GitHub repositories from cookiecutter templates. D
 
 ## Supported Templates
 
-| Template | Description | Use Case |
-|----------|-------------|----------|
-| `python` | Python package with testing framework | CLI tools, libraries, packages |
-| `django` | Full Django web application | Web applications, APIs |
-| `go` | Go service with standard structure | Microservices, APIs |
-| `cpp` | C++ project with CMake | System tools, performance-critical apps |
-| `custom` | Any cookiecutter template URL | Your own templates |
+| Template | Description                           | Use Case                                |
+| -------- | ------------------------------------- | --------------------------------------- |
+| `python` | Python package with testing framework | CLI tools, libraries, packages          |
+| `django` | Full Django web application           | Web applications, APIs                  |
+| `go`     | Go service with standard structure    | Microservices, APIs                     |
+| `cpp`    | C++ project with CMake                | System tools, performance-critical apps |
+| `custom` | Any cookiecutter template URL         | Your own templates                      |
 
 ## Quick Start
 
@@ -118,6 +118,7 @@ curl -X POST http://localhost:8000/api/service \
 **POST** `/api/service`
 
 **Request Body:**
+
 ```json
 {
   "dx_workflow_run_id": "workflow-run-id",
@@ -131,6 +132,7 @@ curl -X POST http://localhost:8000/api/service \
 ```
 
 **Response:**
+
 ```json
 {
   "status": "PENDING",
@@ -150,12 +152,14 @@ Visit http://localhost:8000/api/docs for full interactive API documentation.
 To create a DX workflow that uses this service, see **[DX_WORKFLOW_SETUP.md](DX_WORKFLOW_SETUP.md)** for detailed instructions.
 
 **Quick Summary:**
+
 1. Create an event-driven workflow in DX
 2. Add parameters for template type, GitHub org/repo, project details
 3. Configure HTTP POST to `http://your-service:8000/api/service`
 4. Include `"dx_workflow_run_id": "{{run.id}}"` in the request body
 
 The Python service will:
+
 - Generate code from the cookiecutter template
 - Create a GitHub repository
 - Push the generated code
@@ -206,7 +210,7 @@ Edit `app/core/config.py` to point to different cookiecutter templates:
 ```python
 class Settings(BaseSettings):
     # ... other settings ...
-    
+
     COOKIECUTTER_PYTHON_URL: str = "https://github.com/your-org/your-python-template"
     COOKIECUTTER_DJANGO_URL: str = "https://github.com/your-org/your-django-template"
 ```
@@ -218,6 +222,7 @@ class Settings(BaseSettings):
 **Error**: `refusing to allow a Personal Access Token to create or update workflow without 'workflow' scope`
 
 **Solution**: Your GitHub token needs both `repo` AND `workflow` scopes:
+
 1. Go to https://github.com/settings/tokens
 2. Edit your token
 3. Check both ✅ `repo` and ✅ `workflow`
@@ -241,6 +246,7 @@ class Settings(BaseSettings):
 **Symptom**: DX shows "Status code: null" or no logs appear in Python service
 
 **Solutions**:
+
 - If running locally: Use your machine's IP address (e.g., `http://10.17.0.113:8000`) instead of `localhost` in DX workflow
 - Find your IP: `ipconfig getifaddr en0` (macOS) or `hostname -I` (Linux)
 - If DX is in Docker: Use `http://host.docker.internal:8000/api/service`
@@ -249,6 +255,7 @@ class Settings(BaseSettings):
 ### Empty Repositories
 
 If a repository is created but has no code, check the Python service logs for the push error. Common causes:
+
 - Missing `workflow` scope on GitHub token
 - Repository permissions issues
 - Network connectivity problems
@@ -256,6 +263,7 @@ If a repository is created but has no code, check the Python service logs for th
 ### Missing Status Updates in DX
 
 If the repository is created but DX shows no progress messages:
+
 - Verify `DX_API_KEY` is set in `.env`
 - Verify the key has `workflows:write` scope
 - Check Python logs for API errors
@@ -298,14 +306,14 @@ software-template-example/
 
 ### Environment Variables
 
-| Variable | Required | Description | Default |
-|----------|----------|-------------|---------|
-| `GH_ACCESS_TOKEN` | Yes | GitHub token with `repo` and `workflow` scopes | - |
-| `DX_API_KEY` | For DX | DX API key with `workflows:write` scope | - |
-| `DX_API_URL` | No | DX API base URL | `https://api.getdx.com` |
-| `EXCLUDE_GITHUB_WORKFLOWS` | No | Exclude workflow files if token lacks `workflow` scope | `false` |
-| `COOKIECUTTER_ACCEPT_HOOKS` | No | Run post-generation hooks (requires template dependencies) | `false` |
-| `WEBHOOK_SECRET` | No | Secret for webhook signature verification | - |
+| Variable                    | Required | Description                                                | Default                 |
+| --------------------------- | -------- | ---------------------------------------------------------- | ----------------------- |
+| `GH_ACCESS_TOKEN`           | Yes      | GitHub token with `repo` and `workflow` scopes             | -                       |
+| `DX_API_KEY`                | For DX   | DX API key with `workflows:write` scope                    | -                       |
+| `DX_API_URL`                | No       | DX API base URL                                            | `https://api.getdx.com` |
+| `EXCLUDE_GITHUB_WORKFLOWS`  | No       | Exclude workflow files if token lacks `workflow` scope     | `false`                 |
+| `COOKIECUTTER_ACCEPT_HOOKS` | No       | Run post-generation hooks (requires template dependencies) | `false`                 |
+| `WEBHOOK_SECRET`            | No       | Secret for webhook signature verification                  | -                       |
 
 ### Template URLs
 
@@ -350,14 +358,6 @@ Use the interactive docs at http://localhost:8000/api/docs to test endpoints dir
 - **Rotate tokens regularly** - Minimize impact of compromised tokens
 - **Limit token scopes** - Only grant necessary permissions
 - **Enable webhook secrets** - Set `WEBHOOK_SECRET` to verify request authenticity
-
-## License
-
-[Your License Here]
-
-## Contributing
-
-[Your Contributing Guidelines Here]
 
 ## Support
 
