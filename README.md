@@ -226,6 +226,16 @@ class Settings(BaseSettings):
 
 **Alternative**: If you can't add workflow scope, set `EXCLUDE_GITHUB_WORKFLOWS=true` in `.env` (generated repos won't have CI/CD workflows)
 
+### Django Template Hook Errors
+
+**Error**: `FileNotFoundError: [Errno 2] No such file or directory: 'uv'` or `Hook script failed (exit status: 1)`
+
+**Cause**: The Django cookiecutter template has post-generation hooks that require `uv` (a Python package manager) and other dependencies.
+
+**Solution**: The service is configured to skip post-generation hooks by default (`COOKIECUTTER_ACCEPT_HOOKS=false`). This generates the complete project structure without running setup scripts. The generated repository will be fully functional, but users may need to run initial setup commands manually.
+
+**Alternative**: If you want to run hooks, install the required dependencies (`uv`, etc.) and set `COOKIECUTTER_ACCEPT_HOOKS=true` in `.env`
+
 ### DX Connection Issues
 
 **Symptom**: DX shows "Status code: null" or no logs appear in Python service
@@ -294,6 +304,7 @@ software-template-example/
 | `DX_API_KEY` | For DX | DX API key with `workflows:write` scope | - |
 | `DX_API_URL` | No | DX API base URL | `https://api.getdx.com` |
 | `EXCLUDE_GITHUB_WORKFLOWS` | No | Exclude workflow files if token lacks `workflow` scope | `false` |
+| `COOKIECUTTER_ACCEPT_HOOKS` | No | Run post-generation hooks (requires template dependencies) | `false` |
 | `WEBHOOK_SECRET` | No | Secret for webhook signature verification | - |
 
 ### Template URLs

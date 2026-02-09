@@ -37,6 +37,10 @@ class Settings(BaseSettings):
     COOKIECUTTER_PYTHON_URL: str = "https://github.com/audreyfeldroy/cookiecutter-pypackage"
     COOKIECUTTER_OUTPUT_DIR: str = "cookiecutter_output/{uuid}"
     
+    # Cookiecutter Hook Configuration
+    # Set to False to skip post-generation hooks (useful if templates require tools like 'uv')
+    COOKIECUTTER_ACCEPT_HOOKS: bool = False
+    
     # Webhook Security (optional)
     WEBHOOK_SECRET: Optional[str] = None
 

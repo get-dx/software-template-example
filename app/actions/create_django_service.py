@@ -17,10 +17,16 @@ class CreateDjangoService(BaseCreateService):
             - description: Project description
             - author_name: (optional) Author name
             - email: (optional) Author email
+        
+        Note: Post-generation hooks are controlled by COOKIECUTTER_ACCEPT_HOOKS setting.
+        The Django template hooks require 'uv' and other dependencies. If hooks are
+        disabled, the project structure will be complete but users need to run
+        setup commands manually.
         """
         return cookiecutter(
             settings.COOKIECUTTER_DJANGO_URL,
             extra_context=props,
             no_input=True,
-            output_dir=get_unique_output_dir()
+            output_dir=get_unique_output_dir(),
+            accept_hooks=settings.COOKIECUTTER_ACCEPT_HOOKS
         )

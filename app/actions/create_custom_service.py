@@ -2,6 +2,7 @@ from cookiecutter.main import cookiecutter
 
 from actions.base_create_service import BaseCreateService
 from utils import get_unique_output_dir
+from core.config import settings
 
 
 class CreateCustomService(BaseCreateService):
@@ -27,5 +28,6 @@ class CreateCustomService(BaseCreateService):
             self.cookiecutter_url,
             extra_context=props,
             no_input=True,
-            output_dir=get_unique_output_dir()
+            output_dir=get_unique_output_dir(),
+            accept_hooks=settings.COOKIECUTTER_ACCEPT_HOOKS
         )

@@ -23,5 +23,6 @@ class CreatePythonService(BaseCreateService):
             settings.COOKIECUTTER_PYTHON_URL,
             extra_context=props,
             no_input=True,
-            output_dir=get_unique_output_dir()
+            output_dir=get_unique_output_dir(),
+            accept_hooks=settings.COOKIECUTTER_ACCEPT_HOOKS
         )
