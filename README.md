@@ -149,8 +149,6 @@ Visit http://localhost:8000/api/docs for full interactive API documentation.
 
 ## Integration with DX
 
-To create a DX workflow that uses this service, see **[DX_WORKFLOW_SETUP.md](DX_WORKFLOW_SETUP.md)** for detailed instructions.
-
 **Quick Summary:**
 
 1. Create an event-driven workflow in DX
@@ -298,8 +296,7 @@ software-template-example/
 ├── requirements.txt          # Python dependencies
 ├── Dockerfile                # Docker image definition
 ├── docker-compose.yml        # Docker Compose configuration
-├── README.md                 # This file
-└── DX_WORKFLOW_SETUP.md      # DX integration guide
+└── README.md                 # This file
 ```
 
 ## Configuration Reference
@@ -362,4 +359,4 @@ Use the interactive docs at http://localhost:8000/api/docs to test endpoints dir
 ## Support
 
 - **API Documentation**: http://localhost:8000/api/docs
-- **DX Integration**: See [DX_WORKFLOW_SETUP.md](https://docs.getdx.com/self-service/examples/software-templates/)
+- **DX Integration**: See [Self Service Examples](https://docs.getdx.com/self-service/examples/software-templates/)
